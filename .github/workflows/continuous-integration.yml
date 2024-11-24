@@ -43,10 +43,10 @@ jobs:
 
         docker push ${{ secrets.DOCKER_USERNAME }}/rest-with-spring-boot-erudio:${{ github.run_id }}
         docker push ${{ secrets.DOCKER_USERNAME }}/rest-with-spring-boot-erudio:latest
-
-    - name: Configure Docker authentication for Artifact Registry
+    
+    - name: Configure Docker authentication for Google Cloud Artifact Registry
       run: gcloud auth configure-docker us-central1-docker.pkg.dev
-
+      
     - name: Push to Google Cloud Artifact Registry
       run: |
         
