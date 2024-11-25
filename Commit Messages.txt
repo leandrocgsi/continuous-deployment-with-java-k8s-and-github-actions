@@ -14,5 +14,5 @@ S12_DockerComposeOverview/           git commit -m'Docker Compose Overview Sessi
 S13_DockerizingBefore/               git commit -m'Dockerizing our Application - Before'
 S13_DockerizingAfter/                git commit -m'Dockerizing our Application - After'
 
-S14_DeployToAWS/                     git commit -m'Deploy to Amazon AWS'
-S15_CIandCDwithAWS/                  git commit -m'Continuous Integration with Github, Github Actions, Amazon ECR and ECS'
+S14_DeployToGCP/                     git commit -m'Deploy to Google Cloud Platform'
+S15_CIandCDwithGCP/                  git commit -m'Continuous Integration with Github, Github Actions, Google Artifact Registry and Google Cloud Run'
