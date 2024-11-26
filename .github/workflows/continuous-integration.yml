@@ -39,9 +39,9 @@ jobs:
 
     - name: Push to Docker Hub Container Registry
       run: |
-        docker tag ${{ secrets.DOCKER_USERNAME }}/rest-with-spring-boot-erudio:latest ${{ secrets.DOCKER_USERNAME }}/rest-with-spring-boot-erudio:${{ github.run_id }}
+        docker tag ${{ secrets.DOCKER_USERNAME }}/rest-with-spring-boot-erudio:latest ${{ secrets.DOCKER_USERNAME }}/rest-with-spring-boot-erudio:k8s-${{ github.run_id }}
 
-        docker push ${{ secrets.DOCKER_USERNAME }}/rest-with-spring-boot-erudio:${{ github.run_id }}
+        docker push ${{ secrets.DOCKER_USERNAME }}/rest-with-spring-boot-erudio:k8s-${{ github.run_id }}
         docker push ${{ secrets.DOCKER_USERNAME }}/rest-with-spring-boot-erudio:latest
     
     - name: Configure Docker authentication for Google Cloud Artifact Registry
@@ -51,10 +51,10 @@ jobs:
       run: |
         
         docker tag ${{ secrets.DOCKER_USERNAME }}/rest-with-spring-boot-erudio:latest ${{ secrets.REGISTRY_INFO }}/rest-with-spring-boot-erudio:latest
-        docker tag ${{ secrets.DOCKER_USERNAME }}/rest-with-spring-boot-erudio:latest ${{ secrets.REGISTRY_INFO }}/rest-with-spring-boot-erudio:${{ github.run_id }}
+        docker tag ${{ secrets.DOCKER_USERNAME }}/rest-with-spring-boot-erudio:latest ${{ secrets.REGISTRY_INFO }}/rest-with-spring-boot-erudio:k8s-${{ github.run_id }}
         
         docker push ${{ secrets.REGISTRY_INFO }}/rest-with-spring-boot-erudio:latest
-        docker push ${{ secrets.REGISTRY_INFO }}/rest-with-spring-boot-erudio:${{ github.run_id }}
+        docker push ${{ secrets.REGISTRY_INFO }}/rest-with-spring-boot-erudio:k8s-${{ github.run_id }}
 
     #- name: Deploy to Google Cloud Run
     #  run: |
