@@ -19,7 +19,7 @@ public class OpenApiConfig {
     OpenAPI customOpenAPI() {
         return new OpenAPI()
             .info(new Info()
-                .title("REST API's RESTful from 0 to GCP with Java 21, Spring Boot 3.3.6, Docker and Kubernetes " + " V1 " + service.retrieveInstanceInfo())
+                .title("REST API's RESTful from 0 to GCP with Java 21, Spring Boot 3.3.6, Docker and Kubernetes " + " V2 " + service.retrieveInstanceInfo())
                 .version("v1")
                 .description("Some description about your API")
                 .termsOfService("https://pub.erudio.com.br/meus-cursos")
