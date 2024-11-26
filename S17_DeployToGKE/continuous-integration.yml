@@ -30,11 +30,11 @@ jobs:
         cache: maven
 
     - name: Build Application JAR
-      working-directory: ./S17_DeployToGKE/rest-with-spring-boot-and-java-erudio
+      working-directory: ./S15_CIandCDwithGCP/rest-with-spring-boot-and-java-erudio
       run: mvn clean package
 
     - name: Docker Compose Build
-      working-directory: ./S17_DeployToGKE
+      working-directory: ./S15_CIandCDwithGCP
       run: docker compose build
 
     - name: Push to Docker Hub Container Registry
@@ -56,10 +56,10 @@ jobs:
         docker push ${{ secrets.REGISTRY_INFO }}/rest-with-spring-boot-erudio:latest
         docker push ${{ secrets.REGISTRY_INFO }}/rest-with-spring-boot-erudio:${{ github.run_id }}
 
-    #- name: Deploy to Google Cloud Run
-    #  run: |
-    #    gcloud run deploy rest-with-spring-boot-erudio \
-    #      --image ${{ secrets.REGISTRY_INFO }}/rest-with-spring-boot-erudio:latest \
-    #      --region us-central1 \
-    #      --platform managed \
-    #      --allow-unauthenticated
+    - name: Deploy to Google Cloud Run
+      run: |
+        gcloud run deploy rest-with-spring-boot-erudio \
+          --image ${{ secrets.REGISTRY_INFO }}/rest-with-spring-boot-erudio:latest \
+          --region us-central1 \
+          --platform managed \
+          --allow-unauthenticated
