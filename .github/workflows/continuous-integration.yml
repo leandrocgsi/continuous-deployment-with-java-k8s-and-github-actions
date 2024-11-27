@@ -62,22 +62,22 @@ jobs:
         docker push ${{ secrets.DOCKER_USERNAME }}/rest-with-spring-boot-erudio:k8s-${{ github.run_id }}
         docker push ${{ secrets.DOCKER_USERNAME }}/rest-with-spring-boot-erudio:latest
     
-    - name: Configure Docker authentication for Google Cloud Artifact Registry
-      run: gcloud auth configure-docker us-central1-docker.pkg.dev
+    #- name: Configure Docker authentication for Google Cloud Artifact Registry
+    #  run: gcloud auth configure-docker us-central1-docker.pkg.dev
       
-    - name: Push to Google Cloud Artifact Registry
-      run: |
+    # - name: Push to Google Cloud Artifact Registry
+    #  run: |
         
-        docker tag ${{ secrets.DOCKER_USERNAME }}/rest-with-spring-boot-erudio:latest ${{ secrets.REGISTRY_INFO }}/rest-with-spring-boot-erudio:latest
-        docker tag ${{ secrets.DOCKER_USERNAME }}/rest-with-spring-boot-erudio:latest ${{ secrets.REGISTRY_INFO }}/rest-with-spring-boot-erudio:k8s-${{ github.run_id }}
+    #    docker tag ${{ secrets.DOCKER_USERNAME }}/rest-with-spring-boot-erudio:latest ${{ secrets.REGISTRY_INFO }}/rest-with-spring-boot-erudio:latest
+    #    docker tag ${{ secrets.DOCKER_USERNAME }}/rest-with-spring-boot-erudio:latest ${{ secrets.REGISTRY_INFO }}/rest-with-spring-boot-erudio:k8s-${{ github.run_id }}
         
-        docker push ${{ secrets.REGISTRY_INFO }}/rest-with-spring-boot-erudio:latest
-        docker push ${{ secrets.REGISTRY_INFO }}/rest-with-spring-boot-erudio:k8s-${{ github.run_id }}
+    #    docker push ${{ secrets.REGISTRY_INFO }}/rest-with-spring-boot-erudio:latest
+    #    docker push ${{ secrets.REGISTRY_INFO }}/rest-with-spring-boot-erudio:k8s-${{ github.run_id }}
 
-    - name: Deploy to Google Kubernetes Engine (GKE)
-      run: |
-        kubectl set image deployment rest-with-spring-boot-erudio rest-with-spring-boot-erudio=${{ secrets.REGISTRY_INFO }}/rest-with-spring-boot-erudio:k8s-${{ github.run_id }}
-        kubectl rollout status deployment rest-with-spring-boot-erudio
+    # - name: Deploy to Google Kubernetes Engine (GKE)
+    #  run: |
+    #    kubectl set image deployment rest-with-spring-boot-erudio rest-with-spring-boot-erudio=${{ secrets.REGISTRY_INFO }}/rest-with-spring-boot-erudio:k8s-${{ github.run_id }}
+    #    kubectl rollout status deployment rest-with-spring-boot-erudio
  
     #- name: Deploy to Google Cloud Run
     #  run: |
